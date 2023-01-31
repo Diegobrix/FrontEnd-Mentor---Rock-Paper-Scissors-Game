@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap');
+
+:root {
+    /* Colours */
+    --scissors: hsl(39, 89%, 49%);
+    --scissors-50: hsl(40, 84%, 53%);
+    --paper: hsl(230, 89%, 62%);
+    --paper-50: hsl(230, 89%, 65%);
+    --rock: hsl(349, 71%, 52%);
+    --rock-50: hsl(349, 70%, 56%);
+    --cyan: hsl(189, 59%, 53%);
+    --lizard: hsl(261, 73%, 60%);
+    --lizard-50: hsl(261, 72%, 63%);
+    --cyan-50: hsl(189, 58%, 57%);
+
+
+    /* Primary Colours */
+    --primary-100: hsl(214, 47%, 23%);
+    --primary-150: hsl(237, 49%, 15%);
+
+    /* Neutral Colours */
+    --neutral-100: hsl(229, 64%, 46%);
+    --neutral-200: hsl(217, 16%, 45%);
+    --neutral-300: hsl(229, 25%, 31%);
+
+    /* Typography */
+    --fw-regular: 600;
+    --fw-bold: 700;
+
+    --f-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: var(--f-family);
+}
+
+body {
+    background: radial-gradient(circle, var(--primary-100), var(--primary-150));
+}
+
+/* Mobile - 375px */
+
+/* Desktop - 1366px */
