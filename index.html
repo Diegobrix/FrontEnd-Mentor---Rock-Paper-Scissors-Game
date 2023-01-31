@@ -6,8 +6,13 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
-  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <title>Rock, Paper, Scissors - Original</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/indexStyles.css">
+
+  <!-- Scripts -->
+  <script src="./js/gameScript.js"></script>
 <!-- 
   Score
   Rules
@@ -21,8 +26,27 @@
   Play Again -->
 </head>
 <body>
-  <header></header>
-  <main></main>
+  <header>
+    <div class="scoreboard-wrapper">
+      <p>rock</p>
+      <p>paper</p>
+      <p>scissors</p>
+      <div class="score-wrapper">
+        <p>score</p>
+        <h2 class="score"></h2>
+      </div>
+    </div>
+  </header>
+  <main>
+    <button class="jokenpo" id="paper"></button>
+    <button class="jokenpo" id="scissors"></button>
+    <button class="jokenpo" id="rock"></button>
+    <figure>
+      <img src="./images/bg-triangle.svg" alt="">
+    </figure>
+    <button></button>
+    <dialog></dialog>
+  </main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
