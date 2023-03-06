@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="./css/indexStyles.css">
 
   <!-- Scripts -->
-  <script src="./js/gameScript.js"></script>
+  <script defer src="./js/gameScript.js"></script>
+  <script defer src="./js/rulesScript.js"></script>
 <!-- 
   Score
   Rules
@@ -28,9 +29,9 @@
 <body>
   <header>
     <div class="scoreboard-wrapper">
-      <p>rock</p>
-      <p>paper</p>
-      <p>scissors</p>
+      <figure>
+        <img src="./images/logo.svg" alt="Logo">
+      </figure>
       <div class="score-wrapper">
         <p>score</p>
         <h2 class="score"></h2>
@@ -38,14 +39,35 @@
     </div>
   </header>
   <main>
-    <button class="jokenpo" id="paper"></button>
-    <button class="jokenpo" id="scissors"></button>
-    <button class="jokenpo" id="rock"></button>
+    <div class="buttons-wrapper">
+      <button class="jokenpo" id="paper" data-order="1">
+        <div class="jokenpo-inner">
+          <div class="inner__shadow"></div>
+          <i></i>
+        </div>
+      </button>
+      <button class="jokenpo" id="scissors" data-order="2">
+        <div class="jokenpo-inner">
+          <div class="inner__shadow"></div>
+          <i></i>
+        </div>
+      </button>
+      <button class="jokenpo" id="rock" data-order="0">
+        <div class="jokenpo-inner">
+          <div class="inner__shadow"></div>
+          <i></i>
+        </div>
+      </button>
+    </div>
     <figure>
       <img src="./images/bg-triangle.svg" alt="">
-    </figure>
-    <button></button>
-    <dialog></dialog>
+    </figure> 
+    <button class="rules-button" aria-controls="modal">rules</button>
+    <dialog class="modal" id="modal" opened="false">
+      <h2>rules</h2>
+      <img loading="lazy" src="./images/image-rules.svg" alt="Game Rules">
+      <button class="rules-close"></button>
+    </dialog>
   </main>
 
   <div class="attribution">
