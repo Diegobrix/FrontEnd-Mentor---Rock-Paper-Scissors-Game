@@ -1,6 +1,18 @@
 const scoreDisplay = document.querySelector(".score");
+const container = document.querySelector(".buttons-wrapper");
 const choosed = document.querySelectorAll(".jokenpo");
+const choosedBackground = document.querySelector(".choosed-jokenpo");
+const playerDisplay = document.querySelector("#player");
+const pcDisplay = document.querySelector("#house");
+const iconChoosed = document.querySelector("#player i");
+const iconChoosedPc = document.querySelector("#house i");
+
+const resultContainer = document.querySelector(".game-result-wrapper");
+const resultTitle = document.querySelector(".result-title");
+const btnPlayAgain = document.querySelector(".btn-play-again");
+
 const jokenpo = ["rock", "paper", "scissors"];
+
 let pcChoose;
 let playerChoose;
 
@@ -14,6 +26,10 @@ choosed.forEach((element) => {
     element.addEventListener("click", iChooseYou);
 });
 
+btnPlayAgain.addEventListener("click", () => {
+    playAgain();
+});
+
 function iChooseYou() 
 {
     let optionChoosed = this.getAttribute("data-order");
@@ -25,6 +41,8 @@ function iChooseYou()
     : 1;
 
     game(playerChoose, pcChoose);
+    container.setAttribute("selected", "true");
+    choosedBackground.setAttribute("visible", "true");
 }
 
 function game(player, pc) 
@@ -57,8 +75,40 @@ function game(player, pc)
     {
         score++;
         scoreDisplay.innerText = (score);
+        resultTitle.innerText = "you win";
+    }
+    playerDisplay.style = ("--player: var(--" + jokenpo[player] + ");--player-50:var(--" + jokenpo[player] + "-50);");
+    pcDisplay.style = ("--house: var(--" + jokenpo[pc] + ");--house-50:var(--" + jokenpo[pc] + "-50);");
+    console.log("Player: " + jokenpo[player] + " Pc: " + jokenpo[pc]);
+    iconChoosed.style = ("--img-link: url(../images/icon-"+ jokenpo[player] +".svg);");
+    iconChoosedPc.style = ("--img-link: url(../images/icon-"+ jokenpo[pc] +".svg);");
+
+    if(!winner)
+    {
+        if(pc == player)
+        {
+            resultTitle.innerText = "draw";
+        }
+        else 
+        {
+            resultTitle.innerText = "you lose";
+        }
     }
 
-    console.log("Player: " + jokenpo[player] + " Pc: " + jokenpo[pc]);
+    resultContainer.setAttribute("game-over", "true");
+}
 
+function playAgain() 
+{
+    container.setAttribute("selected", "false");
+    choosedBackground.setAttribute("visible", "false");
+    resultContainer.setAttribute("game-over", "false");
+
+    playerDisplay.style = ("--player: ''; --player-50: '';");
+    pcDisplay.style = ("--house: ''; --house-50: '';");
+    iconChoosed.style = ("--img-link: '';");
+    iconChoosedPc.style = ("--img-link: '';");
+
+    player = "";
+    pc = "";
 }

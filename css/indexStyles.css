@@ -26,22 +26,22 @@
 
     /* Typography */
     --fw-regular: 600;
-    --fw-bold: 700;
+    --fw-bold: 800;
 
-    --f-family: 'Barlow Semi Condensed', sans-serif;
-
+    font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 16px;
 }
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
-* {
+*,
+* > * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    font-family: var(--f-family);
+    font: inherit;
 }
 
 body {
@@ -161,7 +161,7 @@ main .buttons-wrapper {
     width: 85%;
     height: 40%;
 
-    margin-bottom: 3rem;
+    margin-bottom: 8rem;
 }
 
 .jokenpo {
@@ -176,7 +176,8 @@ main .buttons-wrapper {
     background: linear-gradient(to bottom, var(--color-1), var(--color-2));
 }
 
-.jokenpo i {
+.jokenpo i,
+.jokenpo-inner i {
     position: absolute;
     inset: 0;
     margin: auto;
@@ -214,8 +215,16 @@ main .buttons-wrapper {
     --color-2: var(--rock-50);
 }
 
+.jokenpo-background i {
+    background: var(--img-link);
+}
+
 #rock i {
     background: url(../images/icon-rock.svg);
+}
+
+#rock i,
+.jokenpo-background i {
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center center;
@@ -240,6 +249,8 @@ main .buttons-wrapper {
 }
 
 .rules-button {
+    position: absolute;
+    bottom: 3rem;
     width: 6.5rem;
     height: 2rem;
     background: #0000;
@@ -249,4 +260,162 @@ main .buttons-wrapper {
     font-size: .9rem;
 }
 
+.buttons-wrapper[selected="true"] > * {
+    position: relative;
+    pointer-events: none;
+}
+
+.buttons-wrapper[selected="true"] > *,
+main:has(.buttons-wrapper[selected="true"]) figure {
+    animation: pushDown .5s ease-in forwards;
+}
+
+dialog[opened="true"] {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    display: grid;
+    place-items: center;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    border: 0;
+}
+
+dialog button {
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border: 0;
+    background: url("../images/icon-close.svg") no-repeat;
+    background-size: contain;
+}
+
+dialog h2 {
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+    color: var(--neutral-400);
+}
+
+.choosed-jokenpo[visible="false"] {
+    display: none;
+}
+
+.choosed-jokenpo[visible="true"] {
+    animation: popin .5s ease-in forwards;
+}
+
+.choosed-jokenpo{
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 3rem;
+
+    height: 50%;
+}
+
+.choose-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem 0;
+}
+
+.choose-display h2 {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: .8rem;
+}
+
+.jokenpo-background {
+    display: grid;
+    place-items: center;
+
+    width: 7rem;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background: var(--primary-100);
+}
+
+#player {
+    background: linear-gradient(to bottom, var(--player), var(--player-50));
+}
+
+#house {
+    background: linear-gradient(to bottom, var(--house), var(--house-50));
+}
+
+.game-result-wrapper[game-over="false"] {
+    display: none;
+}
+
+.game-result-wrapper[game-over="true"] {
+    position: absolute;
+    bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    gap: 1rem 0;
+}
+
+.game-result-wrapper > h1 {
+    color: var(--neutral-100);
+    font-size: 3rem;
+    font-weight: var(--fw-bold); 
+    letter-spacing: 1px;   
+}
+
+.game-result-wrapper > * {
+    text-transform: uppercase;
+}
+
+.game-result-wrapper > button {
+    width: calc(100% + .5rem);
+    height: 2.6rem;
+    background: var(--neutral-100);
+    border: 0;
+    border-radius: 8px;
+    color: var(--neutral-400);
+    font-weight: 600;
+    font-size: .9rem;
+    letter-spacing: 3px;
+}
+
 /* Desktop - 1366px */
+
+/* Animations */
+@keyframes pushDown {
+    0% {
+        top: 0;
+    }
+    99% {
+        top: 100%;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes popin {
+    from {
+        opacity: 0;
+        margin-bottom: 5rem;
+    }
+    to {
+        opacity: 1;
+        margin-bottom: 12rem;
+    }
+}

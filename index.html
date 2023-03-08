@@ -39,7 +39,7 @@
     </div>
   </header>
   <main>
-    <div class="buttons-wrapper">
+    <div class="buttons-wrapper" selected="false">
       <button class="jokenpo" id="paper" data-order="1">
         <div class="jokenpo-inner">
           <div class="inner__shadow"></div>
@@ -61,7 +61,32 @@
     </div>
     <figure>
       <img src="./images/bg-triangle.svg" alt="">
-    </figure> 
+    </figure>
+    <div class="choosed-jokenpo" visible="false">
+      <div class="choose-display">
+        <div class="jokenpo-background" id="player">
+          <div class="jokenpo-inner">
+            <div class="inner__shadow"></div>
+            <i></i>
+          </div>
+        </div>
+        <h2>you picked</h2>
+      </div>
+      <div class="choose-display">
+        <div class="jokenpo-background" id="house">
+          <div class="jokenpo-inner">
+            <div class="inner__shadow">
+              <i></i>
+            </div>
+          </div>
+        </div>
+        <h2>the house picked</h2>
+      </div>
+    </div> 
+    <div class="game-result-wrapper" game-over="false">
+      <h1 class="result-title"></h1>
+      <button class="btn-play-again">play again</button>
+    </div>
     <button class="rules-button" aria-controls="modal">rules</button>
     <dialog class="modal" id="modal" opened="false">
       <h2>rules</h2>
